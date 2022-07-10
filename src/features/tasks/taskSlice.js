@@ -5,9 +5,10 @@ const taskSlice = createSlice({
   initialState: [],
   reducers: {
     addTask: (state, action) => {
-      console.log(action.payload);
+      state.push(action.payload);
     },
   },
 });
 
+export const { addTask } = taskSlice.actions;
 export default taskSlice.reducer;
