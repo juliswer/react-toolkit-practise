@@ -47,26 +47,48 @@ function TaskForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="title"
-          name="title"
-          onChange={handleChange}
-        />
+      <div className="hero min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="card flex-shrink-0 w-96 max-w-sm shadow-2xl bg-base-100">
+            <div className="card-body">
+              <h1 className="text-3xl font-bold text-center mb-7">
+                Write a Task
+              </h1>
+              <form onSubmit={handleSubmit}>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Title</span>
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Description</span>
+                  </label>
+                  <input
+                    name="description"
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Description"
+                    className="input input-bordered"
+                  />
+                </div>
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary">Save Task</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <textarea
-          name="description"
-          placeholder="description"
-          onChange={handleChange}
-        ></textarea>
-
-        <button type="submit">Add</button>
-      </form>
-      <Fab
-        icon={"Save"}
-        onClick={handleSaveLocalStorage}
-      />
+      <Fab icon={"Save"} onClick={handleSaveLocalStorage} />
     </div>
   );
 }

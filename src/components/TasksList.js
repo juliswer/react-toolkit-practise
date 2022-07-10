@@ -14,10 +14,21 @@ function TasksList() {
   return (
     <div>
       {tasks.map((task) => (
-        <div key={task.id}>
-          <h2>ID: {getShortId(task.id)}</h2>
-          <h3>{task.title}</h3>
-          <p>{task.description}</p>
+        <div className="grid-cols-4">
+          <div key={task.id}>
+            <div className="card w-96 bg-base-100 shadow-xl">
+              <figure>
+                <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">{task.title}</h2>
+                <p>{task.description}</p>
+                <div className="tooltip" data-tip={task.id}>
+                  <h2>ID: {getShortId(task.id)}</h2>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
