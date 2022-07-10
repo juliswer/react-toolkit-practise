@@ -1,14 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteTask } from "../features/tasks/taskSlice";
 
 function TasksList() {
   const tasks = useSelector((state) => state.tasks);
+  const dispatch = useDispatch();
 
   const getShortId = (id) => {
     const idString = id.toString();
     return `${idString.substring(0, 2)}...${idString.substring(
       idString.length - 2
     )}`;
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
   };
 
   return (
@@ -26,6 +32,20 @@ function TasksList() {
                 </div>
                 <h2 className="card-title">{task.title}</h2>
                 <p>{task.description}</p>
+                <div className="card-actions justify-center">
+                  <button
+                    className="btn btn-outline btn-error"
+                    onClick={() => handleDelete(task.id)}
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className="btn btn-outline btn-info"
+                    
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             </div>
           </div>
