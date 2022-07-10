@@ -24,7 +24,7 @@ function TaskForm() {
       alert("Task already exists, please try again later");
     }
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
