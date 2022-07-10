@@ -7,6 +7,8 @@ import "react-tiny-fab/dist/styles.css";
 
 function TaskForm() {
   const tasks = useSelector((state) => state.tasks);
+  const taskToUpdate = useSelector((state) => state.updateTask);
+  
   const dispatch = useDispatch();
 
   const [task, setTask] = React.useState({
@@ -17,7 +19,7 @@ function TaskForm() {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const handleChange = (e) => {
-    const id = Math.floor(Math.random() * 1000000^20);
+    const id = Math.floor((Math.random() * 1000000) ^ 20);
     setTask({
       ...task,
       [e.target.name]: e.target.value,

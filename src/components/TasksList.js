@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTask } from "../features/tasks/taskSlice";
+import { loadTask } from "../features/tasks/updateTaskSlice";
 
 function TasksList() {
   const tasks = useSelector((state) => state.tasks);
@@ -15,6 +16,10 @@ function TasksList() {
 
   const handleDelete = (id) => {
     dispatch(deleteTask(id));
+  };
+
+  const handleUpdate = (id) => {
+    dispatch(loadTask(id));
   };
 
   return (
@@ -41,7 +46,7 @@ function TasksList() {
                   </button>
                   <button
                     className="btn btn-outline btn-info"
-                    
+                    onClick={() => handleUpdate(task.id)}
                   >
                     Update
                   </button>
