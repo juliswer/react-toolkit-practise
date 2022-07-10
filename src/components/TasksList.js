@@ -18,8 +18,13 @@ function TasksList() {
     dispatch(deleteTask(id));
   };
 
-  const handleUpdate = (id) => {
-    dispatch(loadTask(id));
+  const handleUpdate = (id, title, description) => {
+    const taskBody = {
+      id,
+      title,
+      description,
+    }
+    dispatch(loadTask(taskBody));
   };
 
   return (
@@ -46,7 +51,7 @@ function TasksList() {
                   </button>
                   <button
                     className="btn btn-outline btn-info"
-                    onClick={() => handleUpdate(task.id)}
+                    onClick={() => handleUpdate(task.id, task.title, task.description)}
                   >
                     Update
                   </button>
